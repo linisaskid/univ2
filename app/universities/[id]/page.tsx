@@ -151,20 +151,15 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Majors</h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     {university.majors.map((major, index) => (
-                      <div key={index} className="p-4 rounded-lg border">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <h4 className="font-medium">{major.name}</h4>
-                            <p className="text-sm text-muted-foreground mt-1">{major.description}</p>
+                      <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-medium text-lg">{major.name}</h4>
+                            <span className="text-sm text-muted-foreground">{major.duration}</span>
                           </div>
-                          <Badge variant="outline" style={{ backgroundColor: university.color, color: "white" }}>
-                            {major.degree}
-                          </Badge>
-                        </div>
-                        <div className="mt-2 text-sm text-muted-foreground">
-                          Duration: {major.duration}
+                          <p className="text-sm text-muted-foreground">{major.description}</p>
                         </div>
                       </div>
                     ))}
@@ -173,22 +168,25 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
 
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Qualifications</h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     {university.qualifications.map((qual, index) => (
-                      <div key={index} className="p-4 rounded-lg border">
-                        <div className="flex items-start justify-between">
-                          <h4 className="font-medium">{qual.level}</h4>
-                          <Badge variant="outline" style={{ backgroundColor: university.color, color: "white" }}>
-                            {qual.duration}
-                          </Badge>
-                        </div>
-                        <div className="mt-2">
-                          <h5 className="text-sm font-medium mb-2">Requirements:</h5>
-                          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                            {qual.requirements.map((req, reqIndex) => (
-                              <li key={reqIndex}>{req}</li>
-                            ))}
-                          </ul>
+                      <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-medium text-lg">{qual.level}</h4>
+                            <span className="text-sm text-muted-foreground">{qual.duration}</span>
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-medium mb-2">Requirements:</h5>
+                            <ul className="space-y-1.5">
+                              {qual.requirements.map((req, reqIndex) => (
+                                <li key={reqIndex} className="text-sm text-muted-foreground flex items-start gap-2">
+                                  <span className="text-primary">•</span>
+                                  <span>{req}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     ))}
