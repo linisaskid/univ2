@@ -33,15 +33,16 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
       <div className="grid gap-6">
         <div>
           <Card className="overflow-hidden">
-            <div
-              className="h-40 w-full relative bg-cover bg-center"
-              style={{
-                backgroundColor: university.color,
-                backgroundImage: `url(${university.banner})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
+            <div className="h-40 w-full relative">
+              <Image
+                src={university.banner}
+                alt={`${university.name} campus`}
+                fill
+                quality={100}
+                priority={true}
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-4 left-4 flex items-center gap-4">
                 <div className="h-20 w-20 rounded-full bg-white flex items-center justify-center overflow-hidden p-1">
@@ -60,7 +61,6 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                         university.id === 19 ? "center" : // São Paulo (default)
                         university.id === 6 ? "center" : // Caltech (default)
                         "center",
-                      // No scale transforms for quality
                     }}
                     priority={true}
                     sizes="(max-width: 768px) 70px, 70px"
