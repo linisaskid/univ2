@@ -118,33 +118,6 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Performance Metrics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {Object.entries(university.metrics).map(([key, value]) => (
-                  <div key={key} className="space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
-                      <span className="text-sm">{value}/100</span>
-                    </div>
-                    <div className="h-1.5 w-full rounded-full bg-secondary">
-                      <div
-                        className="h-1.5 rounded-full"
-                        style={{
-                          width: `${value}%`,
-                          backgroundColor: university.color,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6">
-            <CardHeader>
               <CardTitle className="text-lg">Academic Programs</CardTitle>
             </CardHeader>
             <CardContent>
@@ -192,6 +165,33 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     ))}
                   </div>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Performance Metrics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {Object.entries(university.metrics).map(([key, value]) => (
+                  <div key={key} className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
+                      <span className="text-sm">{value}/100</span>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-secondary">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{
+                          width: `${value}%`,
+                          backgroundColor: university.color,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
