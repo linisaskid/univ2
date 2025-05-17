@@ -51,7 +51,14 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     width={70}
                     height={70}
                     quality={100}
-                    className={`object-contain rounded-full ${university.id === 6 ? "scale-110" : ""}`}
+                    className={`object-contain rounded-full ${
+                      university.id === 1 ? "scale-120" : // Harvard
+                      university.id === 9 ? "scale-95" : // Imperial College London
+                      university.id === 11 ? "scale-90" : // National University of Singapore
+                      university.id === 19 ? "scale-90" : // University of São Paulo
+                      university.id === 6 ? "scale-110" : // Caltech
+                      ""
+                    }`}
                     priority={true}
                     sizes="(max-width: 768px) 70px, 70px"
                   />

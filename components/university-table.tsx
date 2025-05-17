@@ -113,7 +113,14 @@ export function UniversityTable() {
                       width={40}
                       height={40}
                       quality={100}
-                      className={`object-contain ${university.id === 6 ? "scale-110" : ""}`}
+                      className={`object-contain ${
+                        university.id === 1 ? "scale-120" : // Harvard
+                        university.id === 9 ? "scale-95" : // Imperial College London
+                        university.id === 11 ? "scale-90" : // National University of Singapore
+                        university.id === 19 ? "scale-90" : // University of São Paulo
+                        university.id === 6 ? "scale-110" : // Caltech
+                        ""
+                      }`}
                       sizes="(max-width: 768px) 40px, 40px"
                     />
                   </div>
