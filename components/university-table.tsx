@@ -113,14 +113,17 @@ export function UniversityTable() {
                       width={40}
                       height={40}
                       quality={100}
-                      className={`object-contain ${
-                        university.id === 1 ? "scale-120" : // Harvard
-                        university.id === 9 ? "scale-95" : // Imperial College London
-                        university.id === 11 ? "scale-90" : // National University of Singapore
-                        university.id === 19 ? "scale-90" : // University of São Paulo
-                        university.id === 6 ? "scale-110" : // Caltech
-                        ""
-                      }`}
+                      className="object-cover rounded-full"
+                      style={{
+                        objectPosition:
+                          university.id === 1 ? "center 30%" : // Harvard (zoom in vertically)
+                          university.id === 9 ? "center" : // Imperial College London (default)
+                          university.id === 11 ? "center" : // NUS (default)
+                          university.id === 19 ? "center" : // São Paulo (default)
+                          university.id === 6 ? "center" : // Caltech (default)
+                          "center",
+                        // No scale transforms for quality
+                      }}
                       sizes="(max-width: 768px) 40px, 40px"
                     />
                   </div>
