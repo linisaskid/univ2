@@ -53,7 +53,7 @@ export const universities: University[] = [
       "Harvard University is a private Ivy League research university in Cambridge, Massachusetts. Established in 1636, Harvard is the oldest institution of higher learning in the United States and among the most prestigious in the world. The university is named for its first benefactor, clergyman John Harvard.",
     website: "harvard.edu",
     address: "Massachusetts Hall, Cambridge, MA 02138, United States",
-    logo: "https://1000logos.net/wp-content/uploads/2022/02/Harvard-Crimson-Logo-1971.png",
+    logo: "/harvard.png",
     banner:
       "https://college.harvard.edu/sites/default/files/styles/billboard_image_medium/public/2019-05/widener.jpg?itok=yAwoS2cM",
     color: "#A51C30",
