@@ -44,7 +44,7 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-4 left-4 flex items-center gap-4">
-                <div className="h-20 w-20 rounded-full bg-background flex items-center justify-center overflow-hidden p-1">
+                <div className="h-20 w-20 rounded-full bg-white flex items-center justify-center overflow-hidden p-1">
                   <Image
                     src={university.logo || "/placeholder.svg"}
                     alt={`${university.name} logo`}
