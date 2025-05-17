@@ -29,8 +29,8 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
         </Button>
       </Link>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        <div className="md:col-span-2">
+      <div className="grid gap-6">
+        <div>
           <Card className="overflow-hidden">
             <div
               className="h-40 w-full relative bg-cover bg-center"
@@ -115,118 +115,122 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
           </Card>
         </div>
 
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Academic Programs</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Majors</h3>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {university.majors.map((major, index) => (
-                      <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-medium text-lg">{major.name}</h4>
-                            <span className="text-sm text-muted-foreground">{major.duration}</span>
-                          </div>
-                          <p className="text-sm text-muted-foreground">{major.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Qualifications</h3>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {university.qualifications.map((qual, index) => (
-                      <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-medium text-lg">{qual.level}</h4>
-                            <span className="text-sm text-muted-foreground">{qual.duration}</span>
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-medium mb-2">Requirements:</h5>
-                            <ul className="space-y-1.5">
-                              {qual.requirements.map((req, reqIndex) => (
-                                <li key={reqIndex} className="text-sm text-muted-foreground flex items-start gap-2">
-                                  <span className="text-primary">•</span>
-                                  <span>{req}</span>
-                                </li>
-                              ))}
-                            </ul>
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="md:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Academic Programs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Majors</h3>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {university.majors.map((major, index) => (
+                        <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-medium text-lg">{major.name}</h4>
+                              <span className="text-sm text-muted-foreground">{major.duration}</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground">{major.description}</p>
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Qualifications</h3>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {university.qualifications.map((qual, index) => (
+                        <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-medium text-lg">{qual.level}</h4>
+                              <span className="text-sm text-muted-foreground">{qual.duration}</span>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-2">Requirements:</h5>
+                              <ul className="space-y-1.5">
+                                {qual.requirements.map((req, reqIndex) => (
+                                  <li key={reqIndex} className="text-sm text-muted-foreground flex items-start gap-2">
+                                    <span className="text-primary">•</span>
+                                    <span>{req}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Performance Metrics</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {Object.entries(university.metrics).map(([key, value]) => (
+                    <div key={key} className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
+                        <span className="text-sm">{value}/100</span>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Performance Metrics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {Object.entries(university.metrics).map(([key, value]) => (
-                  <div key={key} className="space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
-                      <span className="text-sm">{value}/100</span>
+                      <div className="h-1.5 w-full rounded-full bg-secondary">
+                        <div
+                          className="h-1.5 rounded-full"
+                          style={{
+                            width: `${value}%`,
+                            backgroundColor: university.color,
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-1.5 w-full rounded-full bg-secondary">
-                      <div
-                        className="h-1.5 rounded-full"
-                        style={{
-                          width: `${value}%`,
-                          backgroundColor: university.color,
-                        }}
-                      />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-lg">Contact Information</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <Globe className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-medium">Website</div>
+                      <a
+                        href={`https://${university.website}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        style={{ color: university.color }}
+                      >
+                        {university.website}
+                      </a>
                     </div>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="mt-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Contact Information</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <Globe className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-medium">Website</div>
-                    <a
-                      href={`https://${university.website}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                      style={{ color: university.color }}
-                    >
-                      {university.website}
-                    </a>
+                  <div className="flex items-start gap-2">
+                    <MapPin className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-medium">Address</div>
+                      <div className="text-muted-foreground">{university.address}</div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-2">
-                  <MapPin className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-medium">Address</div>
-                    <div className="text-muted-foreground">{university.address}</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
