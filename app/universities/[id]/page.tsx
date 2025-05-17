@@ -50,8 +50,10 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     alt={`${university.name} logo`}
                     width={70}
                     height={70}
+                    quality={100}
                     className={`object-contain rounded-full ${university.id === 6 ? "scale-110" : ""}`}
                     priority={true}
+                    sizes="(max-width: 768px) 70px, 70px"
                   />
                 </div>
                 <Badge variant="outline" className="text-lg bg-black text-white px-4 py-1">

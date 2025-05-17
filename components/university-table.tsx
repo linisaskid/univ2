@@ -112,7 +112,9 @@ export function UniversityTable() {
                       alt={`${university.name} logo`}
                       width={40}
                       height={40}
+                      quality={100}
                       className={`object-contain ${university.id === 6 ? "scale-110" : ""}`}
+                      sizes="(max-width: 768px) 40px, 40px"
                     />
                   </div>
                 </TableCell>
