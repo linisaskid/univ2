@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { universities } from "@/lib/data"
+import { theme } from "@/lib/theme"
 
 export function generateStaticParams() {
   return universities.map((university) => ({
@@ -127,7 +128,10 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     <h3 className="text-lg font-semibold mb-3">Majors</h3>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {university.majors.map((major, index) => (
-                        <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                        <div 
+                          key={index} 
+                          className="p-4 rounded-lg border transition-all duration-200 hover:border-[#5C69D2] hover:bg-[#5C69D2]/5"
+                        >
                           <div className="space-y-2">
                             <div className="flex items-center justify-between">
                               <h4 className="font-medium text-lg">{major.name}</h4>
@@ -144,7 +148,10 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     <h3 className="text-lg font-semibold mb-3">Qualifications</h3>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {university.qualifications.map((qual, index) => (
-                        <div key={index} className="p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                        <div 
+                          key={index} 
+                          className="p-4 rounded-lg border transition-all duration-200 hover:border-[#5C69D2] hover:bg-[#5C69D2]/5"
+                        >
                           <div className="space-y-3">
                             <div className="flex items-center justify-between">
                               <h4 className="font-medium text-lg">{qual.level}</h4>
@@ -155,7 +162,7 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                               <ul className="space-y-1.5">
                                 {qual.requirements.map((req, reqIndex) => (
                                   <li key={reqIndex} className="text-sm text-muted-foreground flex items-start gap-2">
-                                    <span className="text-primary">•</span>
+                                    <span className="text-[#5C69D2]">•</span>
                                     <span>{req}</span>
                                   </li>
                                 ))}
@@ -186,10 +193,13 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                       </div>
                       <div className="h-1.5 w-full rounded-full bg-secondary">
                         <div
-                          className="h-1.5 rounded-full"
+                          className="h-1.5 rounded-full transition-all duration-200"
                           style={{
                             width: `${value}%`,
                             backgroundColor: university.color,
+                            '&:hover': {
+                              backgroundColor: '#5C69D2',
+                            },
                           }}
                         />
                       </div>
@@ -213,7 +223,7 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                         href={`https://${university.website}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:underline"
+                        className="hover:underline transition-colors duration-200 hover:text-[#5C69D2]"
                         style={{ color: university.color }}
                       >
                         {university.website}
