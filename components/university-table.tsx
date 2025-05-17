@@ -113,6 +113,7 @@ export function UniversityTable() {
                       width={40}
                       height={40}
                       quality={100}
+                      priority={true}
                       className="object-cover rounded-full"
                       style={{
                         objectPosition:

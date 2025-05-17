@@ -48,15 +48,22 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                   <Image
                     src={university.logo || "/placeholder.svg"}
                     alt={`${university.name} logo`}
-                    width={100}
-                    height={100}
+                    width={70}
+                    height={70}
                     quality={100}
-                    className="object-contain rounded-full"
+                    className="object-cover rounded-full"
                     style={{
-                      objectPosition: "center",
+                      objectPosition:
+                        university.id === 1 ? "center 30%" : // Harvard (zoom in vertically)
+                        university.id === 9 ? "center" : // Imperial College London (default)
+                        university.id === 11 ? "center" : // NUS (default)
+                        university.id === 19 ? "center" : // São Paulo (default)
+                        university.id === 6 ? "center" : // Caltech (default)
+                        "center",
+                      // No scale transforms for quality
                     }}
                     priority={true}
-                    sizes="(max-width: 768px) 100px, 100px"
+                    sizes="(max-width: 768px) 70px, 70px"
                   />
                 </div>
                 <Badge variant="outline" className="text-lg bg-black text-white px-4 py-1">
