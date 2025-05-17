@@ -114,6 +114,12 @@ export function UniversityTable() {
                       height={40}
                       quality={100}
                       priority={true}
+                      loading="eager"
+                      unoptimized={true}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "/placeholder.svg";
+                      }}
                       className="object-cover rounded-full"
                       style={{
                         objectPosition:
@@ -123,7 +129,6 @@ export function UniversityTable() {
                           university.id === 19 ? "center" : // São Paulo (default)
                           university.id === 6 ? "center" : // Caltech (default)
                           "center",
-                        // No scale transforms for quality
                       }}
                       sizes="(max-width: 768px) 40px, 40px"
                     />
