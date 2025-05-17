@@ -106,7 +106,7 @@ export function UniversityTable() {
                   <Badge variant="outline">{university.rank}</Badge>
                 </TableCell>
                 <TableCell>
-                  <div className="h-10 w-10 rounded-full flex items-center justify-center overflow-hidden">
+                  <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center overflow-hidden">
                     <Image
                       src={university.logo || "/placeholder.svg"}
                       alt={`${university.name} logo`}
