@@ -15,6 +15,17 @@ export type University = {
   logo: string
   banner: string // Changed from optional to required
   color: string
+  majors: {
+    name: string
+    description: string
+    duration: string
+    degree: string
+  }[]
+  qualifications: {
+    level: string
+    requirements: string[]
+    duration: string
+  }[]
   metrics: {
     academicReputation: number
     employerReputation: number
@@ -46,6 +57,68 @@ export const universities: University[] = [
     banner:
       "https://college.harvard.edu/sites/default/files/styles/billboard_image_medium/public/2019-05/widener.jpg?itok=yAwoS2cM",
     color: "#A51C30",
+    majors: [
+      {
+        name: "Computer Science",
+        description: "Study of computation, automation, and information processing",
+        duration: "4 years",
+        degree: "Bachelor of Science"
+      },
+      {
+        name: "Business Administration",
+        description: "Comprehensive study of business management and administration",
+        duration: "4 years",
+        degree: "Bachelor of Business Administration"
+      },
+      {
+        name: "Law",
+        description: "Study of legal systems, principles, and practices",
+        duration: "3 years",
+        degree: "Juris Doctor"
+      },
+      {
+        name: "Medicine",
+        description: "Study of human health, disease, and medical practice",
+        duration: "4 years",
+        degree: "Doctor of Medicine"
+      }
+    ],
+    qualifications: [
+      {
+        level: "Undergraduate",
+        requirements: [
+          "High school diploma or equivalent",
+          "Strong academic record",
+          "Standardized test scores (SAT/ACT)",
+          "Letters of recommendation",
+          "Personal statement"
+        ],
+        duration: "4 years"
+      },
+      {
+        level: "Graduate",
+        requirements: [
+          "Bachelor's degree from accredited institution",
+          "Strong academic record",
+          "Standardized test scores (GRE/GMAT)",
+          "Letters of recommendation",
+          "Statement of purpose",
+          "Research experience (for research programs)"
+        ],
+        duration: "2-4 years"
+      },
+      {
+        level: "Professional",
+        requirements: [
+          "Relevant undergraduate degree",
+          "Professional experience",
+          "Letters of recommendation",
+          "Personal statement",
+          "Interview"
+        ],
+        duration: "3-4 years"
+      }
+    ],
     metrics: {
       academicReputation: 100,
       employerReputation: 100,
@@ -75,6 +148,8 @@ export const universities: University[] = [
     banner:
       "https://alum.mit.edu/sites/default/files/images/MIT_77MassAve_EmilyDahl.jpg",
     color: "#A31F34",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 100,
       employerReputation: 100,
@@ -103,6 +178,8 @@ export const universities: University[] = [
     logo: "https://identity.stanford.edu/wp-content/uploads/sites/3/2020/07/block-s-right.png",
     banner: "https://visit.stanford.edu/assets/cardinal/images/explore-campus/campus-planning.jpg",
     color: "#8C1515",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 100,
       employerReputation: 99,
@@ -132,6 +209,8 @@ export const universities: University[] = [
     banner:
       "https://www.visitcambridge.org/app/uploads/2021/11/corpus-christi-1600x0-c-default.jpg",
     color: "#A3C1AD",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 99,
       employerReputation: 98,
@@ -161,6 +240,8 @@ export const universities: University[] = [
     banner:
       "https://cdn.getyourguide.com/img/location/5c10eb21206c9.jpeg/99.jpg",
     color: "#002147",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 100,
       employerReputation: 99,
@@ -190,6 +271,8 @@ export const universities: University[] = [
     banner:
       "https://media.nbclosangeles.com/2019/09/GettyImages-488587347.jpg?quality=85&strip=all&resize=1200%2C675",
     color: "#FF6C0C",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 96,
       employerReputation: 92,
@@ -219,6 +302,8 @@ export const universities: University[] = [
     banner:
       "https://ethz.ch/en/campus/access/zentrum/_jcr_content/par/fullwidthimage/image.imageformat.1286.152068286.jpg",
     color: "#1D4289",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 98,
       employerReputation: 94,
@@ -247,6 +332,8 @@ export const universities: University[] = [
     logo: "https://i0.wp.com/biocars.uchicago.edu/wp-content/uploads/2019/05/logo.png?fit=1200%2C1200&ssl=1&w=640",
     banner: "https://news.uchicago.edu/sites/default/files/styles/full_width/public/images/image/20180315/20171016campusfall1761_0.jpg?itok=hoPJRrK_",
     color: "#800000",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 99,
       employerReputation: 92,
@@ -276,6 +363,8 @@ export const universities: University[] = [
     banner:
       "https://www.imperial.ac.uk/stories/south-kensington-campus-evolution/assets/2fDjW3VjdA/main-aerial-shot-wide-2560x1440.jpeg",
     color: "#003E74",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 97,
       employerReputation: 95,
@@ -304,6 +393,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/png-transparent-university-of-tokyo-kavli-institute-for-the-physics-and-mathematics-of-the-universe-research-university-tokyo-leaf-symmetry-university-thumbnail-k9YPiW48RO9LlHqpur3Bv3RYst1GpJ.png",
     banner: "https://www.u-tokyo.ac.jp/content/400027399.jpg",
     color: "#0C2D83",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 99,
       employerReputation: 91,
@@ -332,6 +423,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/firefox_ASBPX4EeXC-removebg-preview-8wUH802hoASgdnonKb9lFUVxi4oZ1D.png",
     banner: "https://gov-web.s3.ap-northeast-1.amazonaws.com/uploads/2018/04/NUS-ERC.jpg",
     color: "#003D7C",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 96,
       employerReputation: 93,
@@ -360,6 +453,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Peking_University_seal.svg-mR9vAdzpaTvk9yMuTh8S1nkzXSv0kK.png",
     banner: "https://english.pku.edu.cn/Uploads/Bden/File/2020/11/09/i3300z10re5.png",
     color: "#91191C",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 97,
       employerReputation: 94,
@@ -388,6 +483,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/366298928_690067039828240_7479680550951410573_n.jpg-Z59UAHJUGKBWb3WrJJgUnPHkXggLhP.jpeg",
     banner: "https://www.unimelb.edu.au/__data/assets/image/0012/3798804/video.jpg",
     color: "#0C2340",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 95,
       employerReputation: 92,
@@ -416,6 +513,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/university-of-toronto-logo-svg-vector-0Otdn4Ro5PfOBJjc9VvImIq0qrY81z.svg",
     banner: "https://media.istockphoto.com/id/94506078/photo/university-of-toronto.jpg?s=612x612&w=0&k=20&c=LczMUDuYYMCwj_SOFK8iOnzcGAE9RT_RJcZ3rvhg6_s=",
     color: "#002A5C",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 96,
       employerReputation: 91,
@@ -444,6 +543,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tsinghua_University_Logo.svg-OAi4VxB8M3BksFUR9myrIGgOCWMSC9.png",
     banner: "https://www.tsinghua.edu.cn/__local/1/F9/AB/76A4BA1F070CB4CEF8A6209841F_AE779678_DFFA3.jpg",
     color: "#660874",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 95,
       employerReputation: 93,
@@ -473,6 +574,8 @@ export const universities: University[] = [
     banner:
       "https://www.tclf.org/sites/default/files/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_byCharlieNguyen-Flickr_2008_001_Sig.jpg",
     color: "#003262",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 98,
       employerReputation: 90,
@@ -501,6 +604,8 @@ export const universities: University[] = [
     logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/University_of_Sydney_coat_of_arms.png/250px-University_of_Sydney_coat_of_arms.png",
     banner: "https://media.istockphoto.com/id/1486072206/photo/the-facade-of-the-historical-university-of-sydney-quadrangle-in-cloudy-days.jpg?s=612x612&w=0&k=20&c=mn8vpnNrepDqzzdAbh3Rg993Z0JiKDEmrsVN2dzxP3I=",
     color: "#E64626",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 94,
       employerReputation: 91,
@@ -530,6 +635,8 @@ export const universities: University[] = [
     banner:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/UCT_Upper_Campus_landscape_view.jpg/960px-UCT_Upper_Campus_landscape_view.jpg",
     color: "#005883",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 92,
       employerReputation: 88,
@@ -558,6 +665,8 @@ export const universities: University[] = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Webysther_20170627_-_Bras%C3%A3o_USP.svg",
     banner: "https://cdn.britannica.com/96/141196-050-B8A6528A/Paulista-Museum-part-gardens-University-of-Sao.jpg",
     color: "#1C3A70",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 93,
       employerReputation: 87,
@@ -586,6 +695,8 @@ export const universities: University[] = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Seoul_national_university_emblem.svg-E3MO6rT8gjOSpVPA201x0Z2Q3JfTyI.png",
     banner: "https://manoa.hawaii.edu/mix/wp-content/uploads/2023/07/Gwanak-Campus-in-Autumn-scaled-2000x1000.jpg",
     color: "#00205B",
+    majors: [],
+    qualifications: [],
     metrics: {
       academicReputation: 91,
       employerReputation: 89,

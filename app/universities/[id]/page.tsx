@@ -145,6 +145,61 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
 
           <Card className="mt-6">
             <CardHeader>
+              <CardTitle className="text-lg">Academic Programs</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Majors</h3>
+                  <div className="space-y-4">
+                    {university.majors.map((major, index) => (
+                      <div key={index} className="p-4 rounded-lg border">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h4 className="font-medium">{major.name}</h4>
+                            <p className="text-sm text-muted-foreground mt-1">{major.description}</p>
+                          </div>
+                          <Badge variant="outline" style={{ backgroundColor: university.color, color: "white" }}>
+                            {major.degree}
+                          </Badge>
+                        </div>
+                        <div className="mt-2 text-sm text-muted-foreground">
+                          Duration: {major.duration}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Qualifications</h3>
+                  <div className="space-y-4">
+                    {university.qualifications.map((qual, index) => (
+                      <div key={index} className="p-4 rounded-lg border">
+                        <div className="flex items-start justify-between">
+                          <h4 className="font-medium">{qual.level}</h4>
+                          <Badge variant="outline" style={{ backgroundColor: university.color, color: "white" }}>
+                            {qual.duration}
+                          </Badge>
+                        </div>
+                        <div className="mt-2">
+                          <h5 className="text-sm font-medium mb-2">Requirements:</h5>
+                          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                            {qual.requirements.map((req, reqIndex) => (
+                              <li key={reqIndex}>{req}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="mt-6">
+            <CardHeader>
               <CardTitle className="text-lg">Contact Information</CardTitle>
             </CardHeader>
             <CardContent>
