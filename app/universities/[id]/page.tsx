@@ -33,37 +33,30 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
       <div className="grid gap-6">
         <div>
           <Card className="overflow-hidden">
-            <div className="h-40 w-full relative">
-              <Image
-                src={university.banner}
-                alt={`${university.name} campus`}
-                fill
-                quality={100}
-                priority={true}
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 1200px"
-              />
+            <div
+              className="h-40 w-full relative bg-cover bg-center"
+              style={{
+                backgroundColor: university.color,
+                backgroundImage: `url(${university.banner})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-4 left-4 flex items-center gap-4">
                 <div className="h-20 w-20 rounded-full bg-white flex items-center justify-center overflow-hidden p-1">
                   <Image
                     src={university.logo || "/placeholder.svg"}
                     alt={`${university.name} logo`}
-                    width={70}
-                    height={70}
+                    width={100}
+                    height={100}
                     quality={100}
-                    className="object-cover rounded-full"
+                    className="object-contain rounded-full"
                     style={{
-                      objectPosition:
-                        university.id === 1 ? "center 30%" : // Harvard (zoom in vertically)
-                        university.id === 9 ? "center" : // Imperial College London (default)
-                        university.id === 11 ? "center" : // NUS (default)
-                        university.id === 19 ? "center" : // São Paulo (default)
-                        university.id === 6 ? "center" : // Caltech (default)
-                        "center",
+                      objectPosition: "center",
                     }}
                     priority={true}
-                    sizes="(max-width: 768px) 70px, 70px"
+                    sizes="(max-width: 768px) 100px, 100px"
                   />
                 </div>
                 <Badge variant="outline" className="text-lg bg-black text-white px-4 py-1">

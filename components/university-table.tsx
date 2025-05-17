@@ -122,8 +122,8 @@ export function UniversityTable() {
                           university.id === 19 ? "center" : // São Paulo (default)
                           university.id === 6 ? "center" : // Caltech (default)
                           "center",
+                        // No scale transforms for quality
                       }}
-                      priority={university.rank <= 5} // Prioritize loading for top 5 universities
                       sizes="(max-width: 768px) 40px, 40px"
                     />
                   </div>
