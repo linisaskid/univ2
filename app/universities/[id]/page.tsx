@@ -1,0 +1,181 @@
+import Link from "next/link"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { ChevronLeft, MapPin, Trophy, Users, BookOpen, Globe } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { universities } from "@/lib/data"
+
+export function generateStaticParams() {
+  return universities.map((university) => ({
+    id: university.id.toString(),
+  }))
+}
+
+export default function UniversityPage({ params }: { params: { id: string } }) {
+  const university = universities.find((u) => u.id.toString() === params.id)
+
+  if (!university) {
+    notFound()
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8 max-w-5xl">
+      <Link href="/" className="inline-block mb-6">
+        <Button variant="ghost" className="gap-2 pl-0">
+          <ChevronLeft className="h-4 w-4" />
+          Back to Rankings
+        </Button>
+      </Link>
+
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="md:col-span-2">
+          <Card className="overflow-hidden">
+            <div
+              className="h-40 w-full relative bg-cover bg-center"
+              style={{
+                backgroundColor: university.color,
+                backgroundImage: `url(${university.banner})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 flex items-center gap-4">
+                <div className="h-20 w-20 rounded-full bg-background flex items-center justify-center overflow-hidden p-1">
+                  <Image
+                    src={university.logo || "/placeholder.svg"}
+                    alt={`${university.name} logo`}
+                    width={70}
+                    height={70}
+                    className={`object-contain rounded-full ${university.id === 6 ? "scale-110" : ""}`}
+                    priority={true}
+                  />
+                </div>
+                <Badge variant="outline" className="text-lg bg-black text-white px-4 py-1">
+                  Rank #{university.rank}
+                </Badge>
+              </div>
+            </div>
+            <CardHeader className="pt-16">
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="text-2xl">{university.name}</CardTitle>
+                  <div className="flex items-center mt-2 text-muted-foreground">
+                    <MapPin className="mr-1 h-4 w-4" />
+                    {university.city}, {university.country}
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div
+                    className="text-2xl font-medium px-3 py-1 rounded-md"
+                    style={{
+                      backgroundColor: university.color,
+                      color: "#ffffff",
+                    }}
+                  >
+                    {university.score.toFixed(1)}
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-1">Overall Score</div>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="prose max-w-none">
+                <h3>About {university.name}</h3>
+                <p>{university.description}</p>
+
+                <h3>Key Statistics</h3>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 mt-4">
+                  <div className="flex items-center gap-2 rounded-lg border p-3">
+                    <Users className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <div className="text-sm font-medium">Students</div>
+                      <div className="text-xl">{university.studentCount.toLocaleString()}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg border p-3">
+                    <BookOpen className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <div className="text-sm font-medium">Faculty</div>
+                      <div className="text-xl">{university.facultyCount.toLocaleString()}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg border p-3">
+                    <Trophy className="h-5 w-5 text-muted-foreground" />
+                    <div>
+                      <div className="text-sm font-medium">Founded</div>
+                      <div className="text-xl">{university.foundedYear}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Performance Metrics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {Object.entries(university.metrics).map(([key, value]) => (
+                  <div key={key} className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
+                      <span className="text-sm">{value}/100</span>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-secondary">
+                      <div
+                        className="h-1.5 rounded-full"
+                        style={{
+                          width: `${value}%`,
+                          backgroundColor: university.color,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Contact Information</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <Globe className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-medium">Website</div>
+                    <a
+                      href={`https://${university.website}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                      style={{ color: university.color }}
+                    >
+                      {university.website}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <MapPin className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-medium">Address</div>
+                    <div className="text-muted-foreground">{university.address}</div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  )
+}
