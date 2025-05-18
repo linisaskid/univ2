@@ -55,8 +55,8 @@ export default function UniversityPage({ params }: { params: { id: string } }) {
                     style={{
                       objectPosition:
                         university.id === 1 ? "center 30%" : // Harvard (zoom in vertically)
-                        university.id === 9 ? "center" : // Imperial College London (default)
-                        university.id === 11 ? "center" : // NUS (default)
+                        university.id === 9 ? "center 90%" : // Imperial College London (zoom out 10%)
+                        university.id === 11 ? "center 70%" : // NUS (zoom out 30%)
                         university.id === 19 ? "center" : // São Paulo (default)
                         university.id === 6 ? "center" : // Caltech (default)
                         "center",
